@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Suelo
   - moneda
-  - moneda
+  - Enemigo
   layers:
   - Default
   - TransparentFX
