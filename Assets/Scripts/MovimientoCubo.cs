@@ -33,6 +33,9 @@ public class MovimientoCubo : MonoBehaviour
 
     public GameObject Derrota;
     public TMP_Text TextoDerrota;
+
+    public ParticleSystem CoinShine;
+
     void Start()
     {
        rb = GetComponent<Rigidbody>();
@@ -95,6 +98,8 @@ public class MovimientoCubo : MonoBehaviour
             ContadorMonedas++;
             Destroy(col.gameObject);
             FX.Play();
+            CoinShine.Play();
+            CoinShine.transform.position = transform.position;
         }
 
     }
@@ -102,12 +107,18 @@ public class MovimientoCubo : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Enemigo"))
         {
-            Destroy(rb);
+           
             Time.timeScale = 0;
             Derrota.SetActive(true);
             TextoDerrota.text = "LOSER";
             Musica.Stop();
         }
+
+        if (col.gameObject.CompareTag("Elastico"))
+        {
+            rb.AddForce(Vector3.up * 11, ForceMode.Impulse);
+        }
+
     }
     private void OnCollisionStay(Collision col)
     {
