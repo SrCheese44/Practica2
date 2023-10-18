@@ -27,6 +27,7 @@ public class MovimientoCubo : MonoBehaviour
 
     public AudioSource Musica;
     public AudioSource FX;
+    public AudioSource BounceEffect;
 
     private bool GameOver = false;
     public GameObject Pausa;
@@ -117,6 +118,8 @@ public class MovimientoCubo : MonoBehaviour
         if (col.gameObject.CompareTag("Elastico"))
         {
             rb.AddForce(Vector3.up * 11, ForceMode.Impulse);
+            BounceEffect.Play();    
+            
         }
 
     }
