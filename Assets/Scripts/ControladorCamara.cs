@@ -6,7 +6,7 @@ public class ControladorCamara : MonoBehaviour
 {
     public GameObject Personaje;
     public float offsetZ, offsetY;
-    private bool TP = true;
+    private bool TerceraPersona = true;
     void Start()
     {
 
@@ -16,18 +16,18 @@ public class ControladorCamara : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            if (TP)
+            if (TerceraPersona)
             {
-                TP = false;
+                TerceraPersona = false;
             }
             else
             {
-                TP = true;
+                TerceraPersona = true;
             }
          
 
         }
-        if (TP)
+        if (TerceraPersona)
         {
             transform.position = new Vector3(Personaje.transform.position.x, Personaje.transform.position.y + 1, Personaje.transform.position.z - 7);
         }

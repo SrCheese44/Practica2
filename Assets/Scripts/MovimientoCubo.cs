@@ -102,6 +102,15 @@ public class MovimientoCubo : MonoBehaviour
             CoinShine.Play();
             CoinShine.transform.position = transform.position;
         }
+        if (col.gameObject.CompareTag("EasterEgg"))
+        {
+            NivelEnd.SetActive(true);
+            Time.timeScale = 0;
+            TextoNivelEnd.text = "Has encontrado la verdad del universo.";
+            Musica.Stop();
+        }
+
+       
 
     }
     private void OnCollisionEnter(Collision col)
@@ -121,7 +130,11 @@ public class MovimientoCubo : MonoBehaviour
             BounceEffect.Play();    
             
         }
-
+      /*  if (col.gameObject.CompareTag("velocity"))
+        {
+            rb.AddForce(Vector3.forward * 100, ForceMode.Impulse);
+        }
+      */
     }
     private void OnCollisionStay(Collision col)
     {
@@ -160,7 +173,20 @@ public class MovimientoCubo : MonoBehaviour
     }
     void mensajefinal()
     {
-        TextoNivelEnd.text = "¡Nivel Completado!";
+
+        if(tiempo > 10)
+        {
+            TextoNivelEnd.text = "¡Mejora tu tiempo!";
+        }
+        else if(tiempo < 5)
+        {
+            TextoNivelEnd.text = "¡Que rápido!";
+        }
+        else
+        {
+         TextoNivelEnd.text = "¡Nivel Completado!";
+            
+        }
     }
 
 }

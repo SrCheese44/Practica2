@@ -8,6 +8,8 @@ TagManager:
   - moneda
   - Enemigo
   - Elastico
+  - EasterEgg
+  - velocity
   layers:
   - Default
   - TransparentFX

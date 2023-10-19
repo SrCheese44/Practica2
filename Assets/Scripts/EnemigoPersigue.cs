@@ -10,12 +10,6 @@ public class EnemigoPersigue : MonoBehaviour
     public GameObject Enemigo;
     public float speed;
 
-    void Start()
-    {
-        
-    }
-
-   
     void Update()
     {
         Enemigo.transform.position = Vector3.MoveTowards(Enemigo.transform.position, Personaje.transform.position, speed*Time.deltaTime);
