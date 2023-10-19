@@ -18,7 +18,7 @@ public class MovimientoCubo : MonoBehaviour
     public float speed = 15;
     
     private int ContadorMonedas = 0;
-    private int MonedasFinal = 5;
+    private int MonedasFinal = 7;
 
     public GameObject NivelEnd;
     public TMP_Text TextoNivelEnd;
@@ -69,7 +69,7 @@ public class MovimientoCubo : MonoBehaviour
     }
 
     void MenuPausa()
-    {
+    { //Si no se ha perdido el juego, tener la opción de pausar
         if (!GameOver) 
         { 
             if(Input.GetKeyDown(KeyCode.Escape) && !Pausa.activeSelf)
@@ -86,11 +86,12 @@ public class MovimientoCubo : MonoBehaviour
     }
 
     void contador()
-    {
+    {//Contador ascendente
         tiempo += Time.deltaTime;
         textoContador.text = tiempo.ToString("#0.00");
     }
 
+ 
    
     private void OnTriggerEnter(Collider col)
     {
@@ -109,7 +110,6 @@ public class MovimientoCubo : MonoBehaviour
             TextoNivelEnd.text = "Has encontrado la verdad del universo.";
             Musica.Stop();
         }
-
        
 
     }
@@ -120,7 +120,7 @@ public class MovimientoCubo : MonoBehaviour
            
             Time.timeScale = 0;
             Derrota.SetActive(true);
-            TextoDerrota.text = "LOSER";
+            TextoDerrota.text = "Intentálo de nuevo";
             Musica.Stop();
         }
 
@@ -130,11 +130,8 @@ public class MovimientoCubo : MonoBehaviour
             BounceEffect.Play();    
             
         }
-      /*  if (col.gameObject.CompareTag("velocity"))
-        {
-            rb.AddForce(Vector3.forward * 100, ForceMode.Impulse);
-        }
-      */
+       
+      
     }
     private void OnCollisionStay(Collision col)
     {
@@ -174,11 +171,11 @@ public class MovimientoCubo : MonoBehaviour
     void mensajefinal()
     {
 
-        if(tiempo > 10)
+        if(tiempo > 15)
         {
             TextoNivelEnd.text = "¡Mejora tu tiempo!";
         }
-        else if(tiempo < 5)
+        else if(tiempo < 7)
         {
             TextoNivelEnd.text = "¡Que rápido!";
         }
