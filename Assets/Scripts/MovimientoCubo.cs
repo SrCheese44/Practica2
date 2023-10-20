@@ -37,6 +37,8 @@ public class MovimientoCubo : MonoBehaviour
 
     public ParticleSystem CoinShine;
 
+    private bool frozen = false;
+
     void Start()
     {
        rb = GetComponent<Rigidbody>();
@@ -62,9 +64,12 @@ public class MovimientoCubo : MonoBehaviour
     
     private void FixedUpdate()
     {
+        if (!frozen)
+        {
+          Vector3 NuevaVelocidad = new Vector3(movX * speed, rb.velocity.y, movZ * speed);
+          rb.velocity = NuevaVelocidad;
 
-        Vector3 NuevaVelocidad = new Vector3(movX * speed, rb.velocity.y, movZ * speed);
-        rb.velocity = NuevaVelocidad;
+        }
        
     }
 
@@ -90,8 +95,6 @@ public class MovimientoCubo : MonoBehaviour
         tiempo += Time.deltaTime;
         textoContador.text = tiempo.ToString("#0.00");
     }
-
- 
    
     private void OnTriggerEnter(Collider col)
     {
@@ -110,9 +113,17 @@ public class MovimientoCubo : MonoBehaviour
             TextoNivelEnd.text = "Has encontrado la verdad del universo.";
             Musica.Stop();
         }
-       
 
+        if (col.gameObject.CompareTag("BoostVelocity"))
+        {
+            rb.Sleep();
+            frozen = true;
+            rb.AddForce(Vector3.forward * 20, ForceMode.Impulse);
+        }
     }
+
+
+
     private void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.CompareTag("Enemigo"))
@@ -138,6 +149,7 @@ public class MovimientoCubo : MonoBehaviour
         if (col.gameObject.CompareTag("Suelo"))
         {
             estaSaltando = false; 
+            frozen = false;
         }
     }
     private void OnCollisionExit(Collision col)

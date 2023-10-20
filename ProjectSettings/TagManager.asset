@@ -9,7 +9,7 @@ TagManager:
   - Enemigo
   - Elastico
   - EasterEgg
-  - velocity
+  - BoostVelocity
   layers:
   - Default
   - TransparentFX
