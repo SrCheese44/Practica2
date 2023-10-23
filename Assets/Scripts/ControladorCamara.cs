@@ -7,10 +7,7 @@ public class ControladorCamara : MonoBehaviour
     public GameObject Personaje;
     public float offsetZ, offsetY;
     private bool TerceraPersona = true;
-    void Start()
-    {
 
-    }
 
     void Update()
     {

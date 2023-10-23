@@ -66,9 +66,9 @@ public class MovimientoCubo : MonoBehaviour
     {
         if (!frozen)
         {
-          Vector3 NuevaVelocidad = new Vector3(movX * speed, rb.velocity.y, movZ * speed);
-          rb.velocity = NuevaVelocidad;
-
+            Vector3 NuevaVelocidad = new Vector3(movX * speed, rb.velocity.y, movZ * speed);
+            rb.velocity = NuevaVelocidad;
+           // rb.AddForce(movX*speed, JumpPower, movZ*speed, ForceMode.Acceleration);
         }
        
     }
