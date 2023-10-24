@@ -68,7 +68,7 @@ public class MovimientoCubo : MonoBehaviour
         {
             Vector3 NuevaVelocidad = new Vector3(movX * speed, rb.velocity.y, movZ * speed);
             rb.velocity = NuevaVelocidad;
-           // rb.AddForce(movX*speed, JumpPower, movZ*speed, ForceMode.Acceleration);
+           
         }
        
     }
@@ -120,8 +120,22 @@ public class MovimientoCubo : MonoBehaviour
             frozen = true;
             rb.AddForce(Vector3.forward * 20, ForceMode.Impulse);
         }
+        //este item ralentizará el tiempo
+        if (col.gameObject.CompareTag("Slowtime"))
+        {
+            
+            Destroy(col.gameObject);
+            Time.timeScale = 0.3f;
+           
+        }
+        if (col.gameObject.CompareTag("fastTime"))
+        {
+            Destroy(col.gameObject);
+            Time.timeScale = 2;
+            
+        }
     }
-
+    
 
 
     private void OnCollisionEnter(Collision col)

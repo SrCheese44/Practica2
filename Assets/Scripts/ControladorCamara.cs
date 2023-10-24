@@ -7,7 +7,10 @@ public class ControladorCamara : MonoBehaviour
     public GameObject Personaje;
     public float offsetZ, offsetY;
     private bool TerceraPersona = true;
-
+    [Header("camara 1 persona")]
+    public float sensX;
+    public float sensY;
+    private float movX, movY;
 
     void Update()
     {
@@ -30,7 +33,7 @@ public class ControladorCamara : MonoBehaviour
         }
         else
         {
-            transform.position = Personaje.transform.position;
+           transform.position = Personaje.transform.position;
         }
     }
 
