@@ -13,6 +13,9 @@ TagManager:
   - velocity
   - slowTime
   - fastTime
+  - Slowtime
+  - Antigravedad
+  - Antigravedadown
   layers:
   - Default
   - TransparentFX

@@ -59,6 +59,7 @@ public class MovimientoCubo : MonoBehaviour
         contador();
         ResetNivel();
         MenuPausa();
+
     }
 
     
@@ -134,8 +135,24 @@ public class MovimientoCubo : MonoBehaviour
             Time.timeScale = 2;
             
         }
+        if (col.gameObject.CompareTag("Antigravedad"))
+        {
+            rb.useGravity = false;
+        }
+       
     }
-    
+    private void OnTriggerExit(Collider col)
+    {
+
+        if (col.gameObject.CompareTag("Antigravedad"))
+        {
+            rb.useGravity = true;
+        }
+
+
+
+
+    }
 
 
     private void OnCollisionEnter(Collision col)
@@ -155,8 +172,12 @@ public class MovimientoCubo : MonoBehaviour
             BounceEffect.Play();    
             
         }
-       
-      
+        if (col.gameObject.CompareTag("Antigravedadown"))
+        {
+            rb.AddForce(Vector3.down * 2, ForceMode.Impulse);
+        }
+
+
     }
     private void OnCollisionStay(Collision col)
     {
@@ -181,6 +202,7 @@ public class MovimientoCubo : MonoBehaviour
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(currentSceneIndex);
             Time.timeScale = 1;
+            
         }
     }
     void pantallafinal()
