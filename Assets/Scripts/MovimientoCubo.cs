@@ -78,6 +78,7 @@ public class MovimientoCubo : MonoBehaviour
 
             VehiculoGravedad.transform.position = Vector3.MoveTowards(transform.position, VehiculoGravedad.transform.position, speed * Time.deltaTime);
             rb.useGravity = false;
+            rb.constraints = RigidbodyConstraints.FreezePositionY;
             
 
         }
@@ -85,10 +86,9 @@ public class MovimientoCubo : MonoBehaviour
         {
             estaDentro = false; 
             rb.useGravity = true;
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift)&& estaDentro)
-        {
-            rb.AddForce(Vector3.down * 2, ForceMode.Impulse);
+            rb.constraints = RigidbodyConstraints.None;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+
         }
 
     }
