@@ -5,6 +5,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static System.Net.WebRequestMethods;
 
 public class MovimientoCubo : MonoBehaviour
 {
@@ -85,7 +86,7 @@ public class MovimientoCubo : MonoBehaviour
             estaDentro = false; 
             rb.useGravity = true;
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift)&& estaDentro)
         {
             rb.AddForce(Vector3.down * 2, ForceMode.Impulse);
         }

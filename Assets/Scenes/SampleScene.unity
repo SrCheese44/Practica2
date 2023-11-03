@@ -6742,6 +6742,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1319409897}
     m_Modifications:
+    - target: {fileID: 7218514916124964277, guid: 90f5cce976f7d0b4eb3fb3214fe51a35, type: 3}
+      propertyPath: m_Range
+      value: 2.397563
+      objectReference: {fileID: 0}
     - target: {fileID: 7218514916124964281, guid: 90f5cce976f7d0b4eb3fb3214fe51a35, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -7719,7 +7723,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.9150943, g: 0.79574007, b: 0.047481313, a: 1}
   m_Intensity: 1.5
-  m_Range: 3
+  m_Range: 2.397563
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
