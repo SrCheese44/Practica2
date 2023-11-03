@@ -12,7 +12,7 @@ public class MovimientoCubo : MonoBehaviour
     Rigidbody rb;
 
 
-    private float movX, movZ;
+    private float movX, movY,movZ;
     private bool estaSaltando;
     public float JumpPower;
     public float speed = 15;
@@ -39,9 +39,15 @@ public class MovimientoCubo : MonoBehaviour
 
     private bool frozen = false;
 
+    private bool haCogidoLlave = false;
+    private GameObject Puerta;
+    public GameObject VehiculoGravedad;
+    private bool estaDentro = false;
+
     void Start()
     {
        rb = GetComponent<Rigidbody>();
+       Puerta = GameObject.Find("Puerta");
     }
 
     void Update()
@@ -59,8 +65,44 @@ public class MovimientoCubo : MonoBehaviour
         contador();
         ResetNivel();
         MenuPausa();
+        AbrirPuerta();
+
+        if (haCogidoLlave)
+        {
+            Destroy(Puerta);
+        }
+
+        if (estaDentro)
+        {
+
+            VehiculoGravedad.transform.position = Vector3.MoveTowards(transform.position, VehiculoGravedad.transform.position, speed * Time.deltaTime);
+            rb.useGravity = false;
+            
+
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            estaDentro = false; 
+            rb.useGravity = true;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            rb.AddForce(Vector3.down * 2, ForceMode.Impulse);
+        }
 
     }
+
+    private void AbrirPuerta()
+    {
+        if (ContadorMonedas == 5)
+        {
+            haCogidoLlave = true;
+        }
+       
+    }
+
+
+
 
     
     private void FixedUpdate()
@@ -137,21 +179,9 @@ public class MovimientoCubo : MonoBehaviour
         }
         if (col.gameObject.CompareTag("Antigravedad"))
         {
-            rb.useGravity = false;
+            estaDentro = true;
         }
        
-    }
-    private void OnTriggerExit(Collider col)
-    {
-
-        if (col.gameObject.CompareTag("Antigravedad"))
-        {
-            rb.useGravity = true;
-        }
-
-
-
-
     }
 
 

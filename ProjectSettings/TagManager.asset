@@ -16,6 +16,7 @@ TagManager:
   - Slowtime
   - Antigravedad
   - Antigravedadown
+  - GravityLockdown
   layers:
   - Default
   - TransparentFX
